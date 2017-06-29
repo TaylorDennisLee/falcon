@@ -23,28 +23,29 @@ export const initialState: State = {
 export function levelTwoReducer(state = initialState, action: Action) {
   switch (action.type) {
           case REMOVE_LEVEL_2:
-                  for (var item of state.subservices) {
+                  console.log("REMOVE_LEVEL_2");
+                  for (var item of state.level_two.subservices) {
                     item.active = false;
                   }
-                  state.sub_active = 0;
+                  state.level_two.sub_active = 0;
                   return state;
           case ADD_LEVEL_2:
-                  for (var item of state.subservices) {
+                  for (var item of state.level_two.subservices) {
                     item.active = true;
                   }
-                  state.sub_active = state.sub_count;
+                  state.level_two.sub_active = state.level_two.sub_count;
                   return state;
           case REMOVE_LEVEL_3:
-                  if(state.sub_active == 1) {
-                    state.active = false;
+                  if(state.level_two.sub_active == 1) {
+                    state.level_two.active = false;
                   }
-                  state.sub_active -= 1;
+                  state.level_two.sub_active -= 1;
                   return state;
           case ADD_LEVEL_3:
-                  if(state.sub_active == 0) {
-                    state.active = true;
+                  if(state.level_two.sub_active == 0) {
+                    state.level_two.active = true;
                   }
-                  state.sub_active += 1;
+                  state.level_two.sub_active += 1;
                   return state;
           }
 }
