@@ -14,16 +14,38 @@
 <div class="ui divider"></div>
 <div class="ui grid">
   <div class="four wide column">
-    <div class="ui list middle aligned divided">
-      <div class="item">
+    <sui-accordion class="styled fluid">
+      <sui-accordion-panel>
+        <div title>
+          <i class="dropdown icon"></i> Basic Needs
+        </div>
+        <div content>
+          <div class="ui list middle aligned divided">
+            <div class="item">
+              <i *ngIf="(top_level|async)?.active" class="large check circle outline middle aligned icon"></i>
+              <i *ngIf="!(top_level|async)?.active" class="large radio middle aligned icon"></i>
+              <div class="content">
+                <a class="header">{{(top_level | async)?.service_name}}</a>
+                <div class="description">{{(top_level | async)?.sub_active}} of {{(top_level | async)?.sub_count}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </sui-accordion-panel>
+    </sui-accordion>
+  </div>
+  <div class="seven wide column">
+    <div class="ui divided list">
+      <h3 class="ui header">{{(top_level | async)?.service_name}}</h3>
+      <div class="item" *ngFor="let subservice of (top_level | async)?.subservices">
+        <i *ngIf="subservice.active" class="large check circle outline middle aligned icon" (click)="lvlToggle(subservice)"></i>
+        <i *ngIf="!subservice.active" class="large radio middle aligned icon" (click)="lvlToggle(subservice)"></i>
         <div class="content">
-          <a class="header">{{(top_level | async).service_name}}</a>
+          <a class="header" (click)="lvlToggle(subservice)">{{subservice.service_name}}</a>
+          <div class="description">{{subservice.service_code}}</div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="four wide column">
-    <p>{{sub_data | async}}</p>
   </div>
 
 </div>

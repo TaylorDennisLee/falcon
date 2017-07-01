@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { SuiAccordionModule } from 'ng2-semantic-ui';
+
 
 import { AppComponent } from './app.component';
 import { levelTwoReducer } from './reducers';
@@ -14,7 +16,8 @@ import { levelTwoReducer } from './reducers';
   imports: [
     BrowserModule,
     StoreModule.provideStore(levelTwoReducer),
-    StoreDevtoolsModule.instrumentOnlyWithExtension()
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    SuiAccordionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
