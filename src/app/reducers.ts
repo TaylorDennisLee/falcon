@@ -58,3 +58,5 @@ export function levelTwoReducer(state = initialState, action: Action) {
 
         }
 }
+
+export const getActiveSubCount = (state: State) => state.level_two.sub_count;

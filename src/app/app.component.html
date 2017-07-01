@@ -17,10 +17,13 @@
     <div class="ui list middle aligned divided">
       <div class="item">
         <div class="content">
-          <a class="header">{{top_level.service_name | async}}</a>
+          <a class="header">{{(top_level | async).service_name}}</a>
         </div>
       </div>
     </div>
+  </div>
+  <div class="four wide column">
+    <p>{{sub_data | async}}</p>
   </div>
 
 </div>

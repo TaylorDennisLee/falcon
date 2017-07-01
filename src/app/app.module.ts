@@ -13,7 +13,7 @@ import { levelTwoReducer } from './reducers';
   ],
   imports: [
     BrowserModule,
-    StoreModule.provideStore({operations: levelTwoReducer}),
+    StoreModule.provideStore(levelTwoReducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension()
   ],
   providers: [],

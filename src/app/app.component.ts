@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
 import { LevelTwo, LevelThree } from './level.model';
-import { levelTwoReducer, State } from './reducers';
+import * as fromReducers from './reducers';
 
 
 import { ADD_LEVEL_2, REMOVE_LEVEL_2, TOGGLE_LEVEL_2,
@@ -19,14 +19,17 @@ import { ADD_LEVEL_2, REMOVE_LEVEL_2, TOGGLE_LEVEL_2,
 
 export class AppComponent {
   title = 'app';
-  // top_level: Observable<LevelTwo>;
-  top_level: any;
+  top_level: Observable<LevelTwo>;
+  sub_data;
+//  top_level: any;
+  //public model;
 
-  constructor(private store: Store<State>) {
-    this.top_level = store.select('operations');
+  constructor(private store: Store<fromReducers.State>) {
+    this.sub_data = this.store.select(fromReducers.getActiveSubCount);
+    this.top_level = this.store.select('level_two');
+    console.log(this.top_level.subscribe());
     this.store.dispatch({ type: ADD_LEVEL_3 });
     console.log(this.top_level);
-    console.log(this.top_level.level_two);
-    console.log(store.select('level_two_reducer'));
+    console.log(this.sub_data);
   }
 }
