@@ -23,16 +23,8 @@
           <div class="ui list middle aligned divided">
             <div class="item">
               <div class="content">
-                <a class="header" (click)="topToggle(top_level )">{{(top_level | async)?.service_name}}</a>
+                <a class="header" (click)="topToggle(top_level)">{{(top_level | async)?.service_name}}</a>
                 <div class="description">{{(top_level | async)?.sub_active}} of {{(top_level | async)?.sub_count}}</div>
-                <!--<div class="right lower floated content">-->
-                  <!--<div class="ui circular labels">-->
-                    <!--<ng-template ngFor let-subservice [ngForOf]="(top_level | async)?.subservices">-->
-                      <!--<a *ngIf="subservice.active" class="ui teal empty circular label"></a>-->
-                      <!--<a *ngIf="!subservice.active" class="ui empty circular label"></a>-->
-                    <!--</ng-template>-->
-                  <!--</div>-->
-                <!--</div>-->
               </div>
             </div>
           </div>

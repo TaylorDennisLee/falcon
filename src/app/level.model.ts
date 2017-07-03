@@ -1,10 +1,3 @@
-export interface LevelOne {
-  
-
-
-}
-
-
 export interface LevelTwo {
   service_code: string;
   service_name: string;
