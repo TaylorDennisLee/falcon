@@ -22,11 +22,17 @@
         <div content>
           <div class="ui list middle aligned divided">
             <div class="item">
-              <i *ngIf="(top_level|async)?.active" class="large check circle outline middle aligned icon"></i>
-              <i *ngIf="!(top_level|async)?.active" class="large radio middle aligned icon"></i>
               <div class="content">
-                <a class="header">{{(top_level | async)?.service_name}}</a>
+                <a class="header" (click)="topToggle(top_level )">{{(top_level | async)?.service_name}}</a>
                 <div class="description">{{(top_level | async)?.sub_active}} of {{(top_level | async)?.sub_count}}</div>
+                <!--<div class="right lower floated content">-->
+                  <!--<div class="ui circular labels">-->
+                    <!--<ng-template ngFor let-subservice [ngForOf]="(top_level | async)?.subservices">-->
+                      <!--<a *ngIf="subservice.active" class="ui teal empty circular label"></a>-->
+                      <!--<a *ngIf="!subservice.active" class="ui empty circular label"></a>-->
+                    <!--</ng-template>-->
+                  <!--</div>-->
+                <!--</div>-->
               </div>
             </div>
           </div>
@@ -38,9 +44,20 @@
     <div class="ui divided list">
       <h3 class="ui header">{{(top_level | async)?.service_name}}</h3>
       <div class="item" *ngFor="let subservice of (top_level | async)?.subservices">
-        <i *ngIf="subservice.active" class="large check circle outline middle aligned icon" (click)="lvlToggle(subservice)"></i>
-        <i *ngIf="!subservice.active" class="large radio middle aligned icon" (click)="lvlToggle(subservice)"></i>
-        <div class="content">
+
+        <div *ngIf="subservice.active" class="left floated content">
+          <div class="ui black button" (click)="lvlToggle(subservice)">
+            Included
+          </div>
+        </div>
+        
+        <div *ngIf="!subservice.active" class="left floated content">
+          <div class="ui black button basic" (click)="lvlToggle(subservice)">
+            Excluded
+          </div>
+        </div>
+
+       <div class="content">
           <a class="header" (click)="lvlToggle(subservice)">{{subservice.service_name}}</a>
           <div class="description">{{subservice.service_code}}</div>
         </div>

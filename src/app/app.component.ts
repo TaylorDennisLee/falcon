@@ -49,10 +49,14 @@ export class AppComponent {
   topToggle(levelTwoService: LevelTwo)
   {
     if (levelTwoService.active) {
+      console.log("Dispatch: REMOVE_LEVEL_2");
       this.store.dispatch({type: REMOVE_LEVEL_2});
+      levelTwoService.active = false;
     }
-    if (!levelTwoService.active) {
+    else if (!levelTwoService.active) {
+      console.log("Dispatch: ADD_LEVEL_2");
       this.store.dispatch({type: ADD_LEVEL_2});
+      levelTwoService.active = true;
     }
   }
 

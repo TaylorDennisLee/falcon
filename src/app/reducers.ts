@@ -33,6 +33,7 @@ export function levelTwoReducer(state = initialState, action: Action) {
                   return state;
                 }
           case ADD_LEVEL_2: {
+                  console.log("ADD_LEVEL_2");
                   for (var item of state.level_two.subservices) {
                     item.active = true;
                   }
