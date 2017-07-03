@@ -20,7 +20,7 @@ import { ADD_LEVEL_2, REMOVE_LEVEL_2, TOGGLE_LEVEL_2,
 export class AppComponent {
   title = 'app';
   top_level: Observable<LevelTwo>;
-
+  top_level_active = false;
   constructor(private store: Store<fromReducers.State>) {
     this.top_level = this.store.select('level_two');
   }
@@ -37,17 +37,17 @@ export class AppComponent {
     levelThreeService.active = !levelThreeService.active;
   }
 
-  topToggle(levelTwoService: LevelTwo)
+  topToggle()
   {
-    if (levelTwoService.active) {
+    if (this.top_level_active == true) {
       console.log("Dispatch: REMOVE_LEVEL_2");
       this.store.dispatch({type: REMOVE_LEVEL_2});
-      levelTwoService.active = false;
+      this.top_level_active = false;
     }
-    else if (!levelTwoService.active) {
+    else if (this.top_level_active == false) {
       console.log("Dispatch: ADD_LEVEL_2");
       this.store.dispatch({type: ADD_LEVEL_2});
-      levelTwoService.active = true;
+      this.top_level_active = true;
     }
   }
 
