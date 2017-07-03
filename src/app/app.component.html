@@ -23,9 +23,7 @@
           <div class="ui list middle aligned divided">
             <div class="item">
               <div class="content">
-                <p>Moose</p>
                 <a class="header" (click)="topToggle()">{{(top_level | async)?.service_name}}</a>
-                <p>Deer</p>
                 <div class="description">{{(top_level | async)?.sub_active}} of {{(top_level | async)?.sub_count}}</div>
               </div>
             </div>
